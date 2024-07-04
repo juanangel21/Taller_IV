@@ -66,9 +66,9 @@ public class ConjuntoEnteros {
         ConjuntoEnteros conjunto2 = new ConjuntoEnteros();
 
         // Insertando elementos en los conjuntos
+        conjunto1.insertarElemento(30);
         conjunto1.insertarElemento(10);
         conjunto1.insertarElemento(20);
-        conjunto1.insertarElemento(30);
 
         conjunto2.insertarElemento(20);
         conjunto2.insertarElemento(40);
