@@ -46,10 +46,37 @@ public class ConjuntoEnteros {
             if (conjunto[i]) {
                 sb.append(i).append(" ");
                 esVacio = false;
+            } else {
+                sb.append(" - ");
             }
         }
         return esVacio ? "---" : sb.toString().trim();
     }
+
+    // Método para convertir el conjunto a cadena
+    public String imprimirConjunto() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < conjunto.length; i++) {
+            if (conjunto[i]) {
+                sb.append(i).append(" ");
+            }
+        }
+        return sb.toString().trim();
+    }
+
+    // Método para convertir valores de los conjuntos a false o true solo si exiten o no valores en sus posiciones
+    public String imprimirConjuntoFalseTrue() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < conjunto.length; i++) {
+            if (conjunto[i]) {
+                sb.append("true").append(" ");
+            }else {
+                sb.append("false").append(" ");
+            }
+        }
+        return sb.toString().trim();
+    }
+
 
     // Método para verificar si dos conjuntos son iguales
     public boolean esIgualA(ConjuntoEnteros otroConjunto) {
@@ -75,20 +102,28 @@ public class ConjuntoEnteros {
         conjunto2.insertarElemento(50);
 
         // Mostrando los conjuntos
+        System.out.println("Conjunto 1: " + conjunto1.imprimirConjunto());
+        System.out.println("Conjunto 2: " + conjunto2.imprimirConjunto());
+
+        // Mostrando - donde no hay elementos en los conjuntos
         System.out.println("Conjunto 1: " + conjunto1.aStringConjunto());
         System.out.println("Conjunto 2: " + conjunto2.aStringConjunto());
 
+        // Mostrando los valores de los conjuntos como true o false dependiendo si exiten datos en las posiciones
+        System.out.println("Conjunto 1: " + conjunto1.imprimirConjuntoFalseTrue());
+        System.out.println("Conjunto 2: " + conjunto2.imprimirConjuntoFalseTrue());
+
         // Unión de los conjuntos
         ConjuntoEnteros unionConjunto = ConjuntoEnteros.union(conjunto1, conjunto2);
-        System.out.println("Unión: " + unionConjunto.aStringConjunto());
+        System.out.println("Unión: " + unionConjunto.imprimirConjunto());
 
         // Intersección de los conjuntos
         ConjuntoEnteros interseccionConjunto = ConjuntoEnteros.interseccion(conjunto1, conjunto2);
-        System.out.println("Intersección: " + interseccionConjunto.aStringConjunto());
+        System.out.println("Intersección: " + interseccionConjunto.imprimirConjunto());
 
         // Eliminando un elemento
         conjunto1.eliminarElemento(20);
-        System.out.println("Conjunto 1 después de eliminar 20: " + conjunto1.aStringConjunto());
+        System.out.println("Conjunto 1 después de eliminar 20: " + conjunto1.imprimirConjunto());
 
         // Verificando igualdad de conjuntos
         ConjuntoEnteros conjunto3 = new ConjuntoEnteros();
