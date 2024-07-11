@@ -156,8 +156,8 @@ public class EnteroEnorme {
     }
 
     public static void main(String[] args) {
-        EnteroEnorme num1 = new EnteroEnorme("1234567890123456789012345678901234567890");
-        EnteroEnorme num2 = new EnteroEnorme("987654321098765432109876543210987654321");
+        EnteroEnorme num1 = new EnteroEnorme("1000");
+        EnteroEnorme num2 = new EnteroEnorme("1000");
 
         num1.salida("Número 1");
         num2.salida("Número 2");

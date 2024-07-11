@@ -1,13 +1,13 @@
 import java.util.Scanner;
 import java.util.Random;
 
-public class TresEnRaya {
+public class Tateti {
     private int[][] tablero;
     private int jugadorActual;
     private Scanner scanner;
     private Random random;
 
-    public TresEnRaya() {
+    public Tateti() {
         tablero = new int[3][3];
         jugadorActual = 1;
         scanner = new Scanner(System.in);
@@ -80,59 +80,70 @@ public class TresEnRaya {
     }
 
     public void jugar() {
-        System.out.println("Bienvenido a Tres en Raya");
-        System.out.print("¿Deseas jugar contra la computadora? (s/n): ");
+        System.out.println("Bienvenido a Tateti");
+        System.out.print("¿Deseas jugar contra la maquina? (s/n): ");
         boolean modoComputadora = scanner.next().trim().toLowerCase().equals("s");
         System.out.print("¿Quieres ser el primer jugador? (s/n): ");
         int jugadorHumano = scanner.next().trim().toLowerCase().equals("s") ? 1 : 2;
 
-        while (true) {
-            imprimirTablero();
-            System.out.println("Turno del jugador " + (jugadorActual == 1 ? "X" : "O"));
+        do {
+            // Reiniciar el tablero y el jugador actual
+            tablero = new int[3][3];
+            jugadorActual = 1;
 
-            if (modoComputadora && jugadorActual != jugadorHumano) {
-                movimientoComputadora();
-            } else {
-                int fila = -1, columna = -1;
-                boolean movimientoValido = false;
-                while (!movimientoValido) {
-                    try {
-                        System.out.print("Ingrese la fila (0, 1, 2): ");
-                        fila = Integer.parseInt(scanner.next());
-                        System.out.print("Ingrese la columna (0, 1, 2): ");
-                        columna = Integer.parseInt(scanner.next());
+            while (true) {
+                imprimirTablero();
+                System.out.println("Turno del jugador " + (jugadorActual == 1 ? "X" : "O"));
 
-                        if (fila < 0 || fila > 2 || columna < 0 || columna > 2) {
-                            System.out.println("Coordenadas fuera de rango. Intente nuevamente.");
-                        } else if (!realizarMovimiento(fila, columna)) {
-                            System.out.println("Movimiento inválido. La celda ya está ocupada. Intente nuevamente.");
-                        } else {
-                            movimientoValido = true;
+                if (modoComputadora && jugadorActual != jugadorHumano) {
+                    movimientoComputadora();
+                } else {
+                    int fila = -1, columna = -1;
+                    boolean movimientoValido = false;
+                    while (!movimientoValido) {
+                        try {
+                            System.out.print("Ingrese la fila (0, 1, 2): ");
+                            fila = Integer.parseInt(scanner.next());
+                            System.out.print("Ingrese la columna (0, 1, 2): ");
+                            columna = Integer.parseInt(scanner.next());
+
+                            if (fila < 0 || fila > 2 || columna < 0 || columna > 2) {
+                                System.out.println("Coordenadas fuera de rango. Intente nuevamente.");
+                            } else if (!realizarMovimiento(fila, columna)) {
+                                System.out.println("Movimiento inválido. La celda ya está ocupada. Intente nuevamente.");
+                            } else {
+                                movimientoValido = true;
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Entrada inválida. Por favor, ingrese números válidos.");
                         }
-                    } catch (NumberFormatException e) {
-                        System.out.println("Entrada inválida. Por favor, ingrese números válidos.");
                     }
                 }
+
+                if (verificarGanador()) {
+                    imprimirTablero();
+                    System.out.println("¡El jugador " + (jugadorActual == 1 ? "X" : "O") + " ha ganado!");
+                    break;
+                }
+
+                if (tableroLleno()) {
+                    imprimirTablero();
+                    System.out.println("¡Opa empate!");
+                    break;
+                }
+
+                cambiarJugador();
             }
 
-            if (verificarGanador()) {
-                imprimirTablero();
-                System.out.println("¡El jugador " + (jugadorActual == 1 ? "X" : "O") + " ha ganado!");
-                break;
-            }
+            // Preguntar si desea jugar nuevamente
+            System.out.print("¿Desea jugar nuevamente? (s/n): ");
+        } while (scanner.next().trim().toLowerCase().equals("s"));
 
-            if (tableroLleno()) {
-                imprimirTablero();
-                System.out.println("¡Es un empate!");
-                break;
-            }
-
-            cambiarJugador();
-        }
+        System.out.println("¡Gracias por jugar a Tateti!");
     }
 
     public static void main(String[] args) {
-        TresEnRaya juego = new TresEnRaya();
+        Tateti juego = new Tateti();
         juego.jugar();
     }
 }
