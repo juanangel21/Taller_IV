@@ -136,7 +136,7 @@ public class Tateti {
             }
 
             // Preguntar si desea jugar nuevamente
-            System.out.print("¿Desea jugar nuevamente? (s/n): ");
+            System.out.print("¿Revancha io? (s/n): ");
         } while (scanner.next().trim().toLowerCase().equals("s"));
 
         System.out.println("¡Gracias por jugar a Tateti!");
