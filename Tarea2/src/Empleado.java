@@ -1,4 +1,4 @@
-// Empleado.java
+
 public class Empleado {
     private String primerNombre;
     private String apellidoPaterno;

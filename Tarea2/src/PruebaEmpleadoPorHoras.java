@@ -2,7 +2,7 @@ public class PruebaEmpleadoPorHoras {
     public static void main(String[] args) {
         EmpleadoPorHoras empleado = new EmpleadoPorHoras(
                 "John", "Doe",
-                "444-44-4444", 15.50, 40);
+                "444-44-4444", 10, 50);
 
         System.out.println("Información del empleado obtenida por los métodos get:");
         System.out.printf("%n%s %s%n", "Primer nombre es", empleado.obtenerPrimerNombre());

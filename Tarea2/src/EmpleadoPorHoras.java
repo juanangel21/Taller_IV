@@ -2,6 +2,7 @@ public class EmpleadoPorHoras extends Empleado {
     private double horas;
     private double sueldo;
     private double horaSueldo;
+    private double horasExtras;
 
     // Constructor
     public EmpleadoPorHoras(String primerNombre, String apellidoPaterno, String numeroSeguroSocial,
@@ -11,7 +12,7 @@ public class EmpleadoPorHoras extends Empleado {
         establecerHoras(horas);
     }
 
-    // Métodos establecer y obtener
+    // Métodos getter y setter
     public void establecerSueldo(double sueldo) {
         if (sueldo < 0.0) {
             throw new IllegalArgumentException("El sueldo debe ser >= 0.0");
@@ -37,8 +38,12 @@ public class EmpleadoPorHoras extends Empleado {
     }
 
     public double obtenerSueldoHoras() {
-        horaSueldo = sueldo * horas;
-        return horaSueldo;
+        if (horaSueldo <= 40) {
+            return horaSueldo = sueldo * horas;
+        } else {
+            horasExtras = (horas - 40) * (sueldo * 1.5);
+            return horaSueldo = (sueldo * 40) + horasExtras;
+        }
     }
 
     // Método toString
