@@ -2,14 +2,47 @@ public class Main {
     public static void main(String[] args) {
         AnalizadorPagosI analizadorCSV = new AnalizadorPagosCSV("/Users/juanangel/Documents/Facultad/Taller IV/Tarea 3/pago1.csv");
         System.out.println("Pagos en CSV:");
-        analizadorCSV.imprimirPagos();
+
+        // Mostramos la lista de pagos luego de leer el archivo CSV
+        ((AnalizadorPagosCSV) analizadorCSV).imprimirPagos();
+
+        // Consultar un pago específico
+        analizadorCSV.consulta(2);
+
+        // Marcar un pago como pagado
+        analizadorCSV.pago(2);
+
+        // Verificar el cambio de estado
+        analizadorCSV.consulta(2);
 
         AnalizadorPagosI analizadorTSV = new AnalizadorPagosTSV("/Users/juanangel/Documents/Facultad/Taller IV/Tarea 3/pago2.tsv");
         System.out.println("\nPagos en TSV:");
-        analizadorTSV.imprimirPagos();
+
+        // Mostramos la lista de pagos luego de leer el archivo TSV
+        ((AnalizadorPagosTSV) analizadorTSV).imprimirPagos();
+
+        // Consultar un pago especifico
+        analizadorTSV.consulta(8);
+
+        // Marcar un pago como pagado
+        analizadorTSV.pago(8);
+
+        // Verificar el cambio de estado
+        analizadorTSV.consulta(8);
 
         AnalizadorPagosI analizadorTXT = new AnalizadorPagosTXT("/Users/juanangel/Documents/Facultad/Taller IV/Tarea 3/pago3.txt");
         System.out.println("\nPagos en TXT:");
-        analizadorTXT.imprimirPagos();
+
+        // Mostramos la lista de pagos luego de leer el archivo TXT
+        ((AnalizadorPagosTXT) analizadorTXT).imprimirPagos();
+
+        // Consultar un pago específico
+        analizadorTXT.consulta(14);
+
+        // Marcar un pago como pagado
+        analizadorTXT.pago(14);
+
+        // Verificar el cambio de estado
+        analizadorTXT.consulta(14);
     }
 }

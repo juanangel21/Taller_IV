@@ -25,7 +25,7 @@ public class AnalizadorPagosCSV implements AnalizadorPagosI {
                 pagos.add(new Pago(id, fecha, monto, nombreCliente));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Archivo no existe o ruta invalida");
         }
     }
 
@@ -37,12 +37,23 @@ public class AnalizadorPagosCSV implements AnalizadorPagosI {
                 return;
             }
         }
-        System.out.println("Pago con ID " + id + " no encontrado.");
+        System.out.println("\nPago con ID " + id + " no encontrado.\n");
     }
 
     @Override
     public void pago(int id) {
-        System.out.println("Pago con ID " + id + " procesado.");
+        for (Pago pago : pagos) {
+            if (pago.getId() == id) {
+                if (pago.getEstado().equals("Pendiente")) {
+                    pago.setEstado("Pagado");
+                    System.out.println("\nPago con ID " + id + " ha sido marcado como pagado.\n");
+                } else {
+                    System.out.println("\nPago con ID " + id + " ya está pagado.\n");
+                }
+                return;
+            }
+        }
+        System.out.println("Pago con ID " + id + " no encontrado.");
     }
 
     public void imprimirPagos() {

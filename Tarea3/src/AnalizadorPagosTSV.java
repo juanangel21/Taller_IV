@@ -17,7 +17,7 @@ public class AnalizadorPagosTSV implements AnalizadorPagosI {
             String linea;
             br.readLine();
             while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split("\\\\t"); // Uso "\\\\t" para separar por el carácter literal '\t' ya que el caracter no me reconoce como tabulacion
+                String[] datos = linea.split("\t");
                 int id = Integer.parseInt(datos[0].trim());
                 String fecha = datos[1].trim();
                 double monto = Double.parseDouble(datos[2].trim());
@@ -25,7 +25,7 @@ public class AnalizadorPagosTSV implements AnalizadorPagosI {
                 pagos.add(new Pago(id, fecha, monto, nombreCliente));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Archivo no existe o ruta invalida");
         }
     }
 
@@ -37,12 +37,23 @@ public class AnalizadorPagosTSV implements AnalizadorPagosI {
                 return;
             }
         }
-        System.out.println("Pago con ID " + id + " no encontrado.");
+        System.out.println("\nPago con ID " + id + " no encontrado.\n");
     }
 
     @Override
     public void pago(int id) {
-        System.out.println("Pago con ID " + id + " procesado.");
+        for (Pago pago : pagos) {
+            if (pago.getId() == id) {
+                if (pago.getEstado().equals("Pendiente")) {
+                    pago.setEstado("Pagado");
+                    System.out.println("\nPago con ID " + id + " ha sido marcado como pagado.\n");
+                } else {
+                    System.out.println("\nPago con ID " + id + " ya está pagado.\n");
+                }
+                return;
+            }
+        }
+        System.out.println("\nPago con ID " + id + " no encontrado.\n");
     }
 
     public void imprimirPagos() {
