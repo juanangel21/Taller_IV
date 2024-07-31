@@ -20,7 +20,7 @@ public class PizzaTester {
                 System.out.println(pizza4);
                 System.out.println("Costo: $" + pizza4.calcularCosto());
             } catch (IllegalArgumentException e) {
-                System.out.println("Error al crear pizza4: " + e.getMessage());
+                System.out.println("Error en el pedido: " + e.getMessage());
             }
 
             // Creación de una pizza con toppings inválidos (debería lanzar una excepción)
@@ -29,7 +29,7 @@ public class PizzaTester {
                 System.out.println(pizza5);
                 System.out.println("Costo: $" + pizza5.calcularCosto());
             } catch (IllegalArgumentException e) {
-                System.out.println("Error al crear pizza5: " + e.getMessage());
+                System.out.println("Error en el pedido: " + e.getMessage());
             }
 
         } catch (Exception e) {

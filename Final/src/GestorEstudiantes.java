@@ -64,6 +64,7 @@ public class GestorEstudiantes {
             for (Estudiante estudiante : estudiantes) {
                 writer.println(estudiante.getNombre() + " " + estudiante.getApellido() + " - Promedio: " + estudiante.calcularPromedio());
             }
+            System.out.println("Archivo generado exitosamente.");
         } catch (IOException e) {
             System.err.println("Error al escribir el informe: " + e.getMessage());
         }
