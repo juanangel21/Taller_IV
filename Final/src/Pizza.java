@@ -1,28 +1,28 @@
 public class Pizza {
     // Atributos privados
     private String size;
-    private int cheeseToppings;
+    private int quesoToppings;
     private int pepperoniToppings;
-    private int oliveToppings;
+    private int aceitunasToppings;
 
     // Constructor
-    public Pizza(String size, int cheeseToppings, int pepperoniToppings, int oliveToppings) {
+    public Pizza(String size, int quesoToppings, int pepperoniToppings, int aceitunasToppings) {
         if (!size.equals("pequeña") && !size.equals("mediana") && !size.equals("grande")) {
             throw new IllegalArgumentException("Tamaño de pizza inválido");
         }
 
-        if (cheeseToppings > 3 || pepperoniToppings > 3 || oliveToppings > 3) {
+        if (quesoToppings > 3 || pepperoniToppings > 3 || aceitunasToppings > 3) {
             throw new IllegalArgumentException("No se pueden agregar más de 3 toppings de ningún tipo");
         }
 
-        if (size.equals("pequeña") && (cheeseToppings + pepperoniToppings + oliveToppings) > 5) {
+        if (size.equals("pequeña") && (quesoToppings + pepperoniToppings + aceitunasToppings) > 5) {
             throw new IllegalArgumentException("Las pizzas pequeñas no pueden tener más de 5 toppings en total");
         }
 
         this.size = size;
-        this.cheeseToppings = cheeseToppings;
+        this.quesoToppings = quesoToppings;
         this.pepperoniToppings = pepperoniToppings;
-        this.oliveToppings = oliveToppings;
+        this.aceitunasToppings = aceitunasToppings;
     }
 
     // Método para calcular el costo de la pizza
@@ -39,7 +39,7 @@ public class Pizza {
                 baseCost = 14;
                 break;
         }
-        int totalToppings = cheeseToppings + pepperoniToppings + oliveToppings;
+        int totalToppings = quesoToppings + pepperoniToppings + aceitunasToppings;
         return baseCost + (2 * totalToppings);
     }
 
@@ -47,8 +47,8 @@ public class Pizza {
     @Override
     public String toString() {
         return "Pizza tamaño: " + size +
-                ", Toppings de queso: " + cheeseToppings +
+                ", Toppings de queso: " + quesoToppings +
                 ", Toppings de pepperoni: " + pepperoniToppings +
-                ", Toppings de aceituna: " + oliveToppings;
+                ", Toppings de aceituna: " + aceitunasToppings;
     }
 }
