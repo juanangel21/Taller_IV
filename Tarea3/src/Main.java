@@ -1,5 +1,7 @@
 public class Main {
     public static void main(String[] args) {
+
+        // Leemos el archivo CSV
         AnalizadorPagosI analizadorCSV = new AnalizadorPagosCSV("/Users/juanangel/Documents/Facultad/Taller IV/Tarea 3/pago1.csv");
         System.out.println("Pagos en CSV:");
 
@@ -15,6 +17,7 @@ public class Main {
         // Verificar el cambio de estado
         analizadorCSV.consulta(2);
 
+        // Leemos el archivo TSV
         AnalizadorPagosI analizadorTSV = new AnalizadorPagosTSV("/Users/juanangel/Documents/Facultad/Taller IV/Tarea 3/pago2.tsv");
         System.out.println("\nPagos en TSV:");
 
@@ -30,6 +33,7 @@ public class Main {
         // Verificar el cambio de estado
         analizadorTSV.consulta(8);
 
+        // Leemos el archivo TXT
         AnalizadorPagosI analizadorTXT = new AnalizadorPagosTXT("/Users/juanangel/Documents/Facultad/Taller IV/Tarea 3/pago3.txt");
         System.out.println("\nPagos en TXT:");
 
